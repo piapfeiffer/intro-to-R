@@ -13,7 +13,7 @@ sqrt(10)
 ## ----comparisons--------------------------------------------------------------
 3 < 5
 3 > 5
-3 <= 5 
+3 <= 5
 3 >= 5
 3 == 5     # Attention: double equal sign
 3 != 5
@@ -34,7 +34,7 @@ x1 <- c("Dec", "Apr", "Jan", "Mar")
 x2 <- c("Dec", "Apr", "Jam", "Mar")
 sort(x1)
 month_levels <- c(
-  "Jan", "Feb", "Mar", "Apr", "May", "Jun", 
+  "Jan", "Feb", "Mar", "Apr", "May", "Jun",
   "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"
 )
 y1 <- factor(x1, levels = month_levels)
@@ -42,12 +42,15 @@ y2 <- factor(x2, levels = month_levels)
 sort(y1)
 
 ## ----sequences----------------------------------------------------------------
-seq_incr <- seq(1, 5, by = 1)
+seq_incr <- seq(from = 1, to = 5, length.out = 15)
 seq_decr <- 10^seq(4, 0, by = -1)
 
+rep_vec <- c(rep(1, 10), rep(2,3), 6:9)
+
 ## ----matrices-----------------------------------------------------------------
-mat <- matrix(0, nrow = 5, ncol = 5)
-diag(mat) <- c(rep(1, 2), rep(4, 3))
+mat1 <- matrix(0, nrow = 5, ncol = 5)
+mat2 <- matrix(0, nrow = 7, ncol = 6)
+diag(mat1) <- c(rep(1, 2), rep(4, 3))
 
 ## ----data_frames--------------------------------------------------------------
 v_char <- paste0("char", seq(1, 10, 1))
@@ -60,9 +63,9 @@ df$col1[df$col3] #indexing
 df$col2[df$col2 > 0.05]
 
 ## ----lists--------------------------------------------------------------------
-my_list <- list(matrix = mat, 
-                vector = pyth_triple, 
-                fact = y2, 
+my_list <- list(matrix = mat,
+                vector = pyth_triple,
+                fact = y2,
                 bool = TRUE)
 
 ## ----installation, eval = FALSE-----------------------------------------------
@@ -111,25 +114,25 @@ save(cereal_new, file = file.path("cereal", "cereal_mod.Rdata"))
 load(file = file.path("cereal", "cereal_mod.Rdata"))
 
 ## ----basic_plots--------------------------------------------------------------
-plot(df$col2, df$col2^2, 
-     type = "l", 
-     lty = 1, 
+plot(df$col2, df$col2^2,
+     type = "l",
+     lty = 1,
      col = 2,
      xlab = "x", ylab = expression(x^2))
-points(df$col2, df$col2^2, 
+points(df$col2, df$col2^2,
        pch = 19)
 abline(v = 0.05, lty = 2)
 abline(h = 0.0025, lty = 3)
 abline(coef = c(0, 0.1), col = 4)
 
 ## ----bar_plot-----------------------------------------------------------------
-barplot(df$col2, 
-        names.arg = df$col1, 
+barplot(df$col2,
+        names.arg = df$col1,
         cex.names = 0.9,
         col = c(rep(8, 3), rep(7, 2), 1:5))
 
 ## ----histogram----------------------------------------------------------------
-hist(c(1, 1, 1, 1, 2, 3, 2, 2, 3, 4, 5, 5, 5), 
+hist(c(1, 1, 1, 1, 2, 3, 2, 2, 3, 4, 5, 5, 5),
      breaks = 4,
      main = "Example for histogram",
      xlab = "Numbers",
@@ -145,7 +148,7 @@ pairs(cereal_new[,1:2])
 library(ggplot2)
 library(RColorBrewer)
 ggplot(data = df,
-       aes(x = col2, y = col2^2)) + 
+       aes(x = col2, y = col2^2)) +
   geom_line() +
   geom_point(aes(col = col3)) +
   xlab("x") + ylab(expression(x^2)) +
@@ -155,7 +158,7 @@ ggplot(data = df,
 
 ## ----if_else------------------------------------------------------------------
 if (3 > 5) {
-  print("That's true!") 
+  print("That's true!")
   } else {
   print("That's false")
   }
